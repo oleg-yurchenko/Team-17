@@ -180,6 +180,8 @@ GameObject:
   - component: {fileID: 885316260}
   - component: {fileID: 885316259}
   - component: {fileID: 885316258}
+  - component: {fileID: 885316263}
+  - component: {fileID: 885316262}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -197,7 +199,7 @@ Rigidbody2D:
   m_GameObject: {fileID: 885316257}
   m_BodyType: 0
   m_Simulated: 1
-  m_UseFullKinematicContacts: 0
+  m_UseFullKinematicContacts: 1
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
@@ -291,6 +293,34 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &885316262
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885316257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b994ab01c17b455d8e89e9a13945867, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c_moveForceMultiplier: 10
+  c_jumpForceMultiplier: 7
+  c_speedLimit: 15
+--- !u!114 &885316263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 885316257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca07a83e0a60f499ebf73265912398f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blink_activeLimit: 0.75
 --- !u!1 &943832847
 GameObject:
   m_ObjectHideFlags: 0
