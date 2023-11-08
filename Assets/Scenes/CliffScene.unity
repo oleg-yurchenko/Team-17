@@ -181,11 +181,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4452570109798313085, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.14
       objectReference: {fileID: 0}
     - target: {fileID: 4452570109798313085, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4452570109798313085, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_LocalPosition.z
@@ -223,13 +223,25 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
+    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: c_speedLimit
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: c_jumpForceMultiplier
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: c_moveForceMultiplier
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 8101441948097134214, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_LinearDrag
-      value: 0.4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8101441948097134214, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_AngularDrag
-      value: 1
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
