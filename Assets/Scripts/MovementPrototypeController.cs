@@ -20,7 +20,8 @@ public class MovementPrototypeController : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update() {
+    void Update()
+    {
 
     }
     // FixedUpdate used for physics calculations
@@ -36,10 +37,13 @@ public class MovementPrototypeController : MonoBehaviour
         if (Input.GetKey("d"))
             horizontalForce += Vector2.right * horizontalMultiplier;
 
-        if (!hasJumped && verticalForce.magnitude > 0.0f) {
+        if (!hasJumped && verticalForce.magnitude > 0.0f)
+        {
             body.AddForce(verticalForce, ForceMode2D.Impulse);
             hasJumped = true;
-        } else if (body.velocity.y == 0.0f) {
+        }
+        else if (body.velocity.y == 0.0f)
+        {
             hasJumped = false;
         }
         if (body.velocity.x <= c_speedLimit)
