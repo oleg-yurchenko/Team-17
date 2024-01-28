@@ -263,10 +263,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   c_poundForceMultiplier: 7.5
+  isPounding: 0
+  canPound: 0
+  isFrozen: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
-  maxDistance: 0.1
+  poundDistance: 1
+  freezeTimeThreshold: 0.5
+  boxSize: {x: 1, y: 2.5}
+  doubleTapTimeThreshold: 0.5
 --- !u!1 &1478815609
 GameObject:
   m_ObjectHideFlags: 0

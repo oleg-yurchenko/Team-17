@@ -5,14 +5,24 @@ using UnityEngine;
 public class GroundPound : MonoBehaviour
 {
     public float c_poundForceMultiplier;
+    public bool isPounding;
+    public bool canPound;
+    public bool isFrozen;
+    public LayerMask groundLayer;
+    public float poundDistance = 1;
+    public float freezeTimeThreshold = 0.5f;
+    public Vector2 boxSize = new Vector2(1f, 2.5f); // Adjust the size of the rectangle
 
+    private float lastTapTime;
+    private float initFrozenTime;
+    private float frozenTime;
+    public float doubleTapTimeThreshold = 0.5f; // Adjust this threshold as needed
+    
     private Vector2 verticalForce = new Vector2();
-    private bool isPounding;
-    private bool canPound;
     private Collider2D collider;
     private SpriteRenderer renderer;
-    public LayerMask groundLayer;
-    public float maxDistance = 0.1f;
+    
+    
     private Rigidbody2D rb;
 
 
@@ -20,6 +30,7 @@ public class GroundPound : MonoBehaviour
     {
         isPounding = false;
         canPound = false;
+        isFrozen = false;
         collider = GetComponent<Collider2D>();
         renderer = GetComponent<SpriteRenderer>();
         rb = GetComponent<Rigidbody2D>();
@@ -27,24 +38,47 @@ public class GroundPound : MonoBehaviour
 
     void Update()
     {
-        // Check for your freeze condition, for example, when a key is pressed
-        if (Input.GetKeyDown("down") && canPound)
+        if (!isFrozen)
         {
-            // Freeze the position of the player along the X and Y axes
+            if (Input.GetKeyDown("s") && canPound)
+            {
+                // Check if it's a double tap
+                if (Time.time - lastTapTime < doubleTapTimeThreshold)
+                {
+                    isPounding = true;
+                    canPound = false;
+                    isFrozen = true;
+                    initFrozenTime = Time.time;
+                    renderer.color = Color.white;
+                }
 
-            rb.constraints = RigidbodyConstraints2D.FreezePositionX;
-            verticalForce = new Vector2();
-            verticalForce += Vector2.down * c_poundForceMultiplier;
-            rb.AddForce(verticalForce, ForceMode2D.Impulse);
+                lastTapTime = Time.time;
+            }
 
+            //on the ground again - free movement
+            if (!canPound && !isPounding)
+            {
+                rb.constraints = RigidbodyConstraints2D.None;
+            }
+        } 
+        else //player is frozen - freeze for a second before pounding
+        {
+            //freeze x and y position
+            if (frozenTime - initFrozenTime < freezeTimeThreshold)
+            {
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezePositionY;
+            } 
+            else {
+                //freeze only x, let fall
+                rb.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.None;
+                isFrozen = false;
+                verticalForce = new Vector2();
+                verticalForce += Vector2.down * c_poundForceMultiplier;
+                rb.AddForce(verticalForce, ForceMode2D.Impulse);
+            }
+            frozenTime = Time.time;
         }
 
-        if (!canPound)
-        {
-            rb.constraints = RigidbodyConstraints2D.None;
-        }
-
-        // Add other player movement or input handling code here
     }
 
     // FixedUpdate used for physics calculations
@@ -55,20 +89,27 @@ public class GroundPound : MonoBehaviour
         //print("Active Timer: "+blink_activeTimer.ToString());
         //print("delta time: " + Time.fixedDeltaTime);
 
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, maxDistance, groundLayer);
+        //cast ray to check if poundDistance away from the ground
+        RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0f, Vector2.down, 0f, groundLayer);
+        //not near ground - can pound
         if (hit.collider == null)
         {
-            canPound = true;
+            // cant pound if already pounding
+            if (isPounding == false)
+            {
+                canPound = true;
+                renderer.color = Color.red;
+            }
+            
         } else
         {
             canPound = false;
+            isPounding = false;
+            renderer.color = Color.white;
         }
         
-        if (Input.GetKey("down") && canPound) {
-            isPounding = true;
-            canPound = false;
-        }
-        
+       
+
 
     }
 }
