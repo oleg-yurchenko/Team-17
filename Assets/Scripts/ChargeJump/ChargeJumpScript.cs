@@ -1,16 +1,27 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class ChargeJumpScript : MonoBehaviour
 {
 	[SerializeField] private Transform checkGroundSphere;
 	[SerializeField] private LayerMask groundMask;
-	[SerializeField] private float jumpPower;
-	[SerializeField] private float chargePower;
+	[SerializeField] private float maxJumpPower = 3.0f;
+	public float c_MaxJumpPower 
+	{
+		get { return maxJumpPower; }
+		set { maxJumpPower = value; }
+	}
+	[SerializeField] public float chargePower = 1.0f;
+	public float c_ChargePower 
+	{
+		get { return chargePower; }
+		set { chargePower = value; }
+	}
 	[SerializeField] private Vector2 jumpDirection = Vector2.up;
+	[SerializeField] private ChargeJumpMeter jumpMeter;
 
 	private float initialChargePower;
 	private Rigidbody2D rb;
-	private MovementPrototypeController movement;
 	private bool jumpNow = false;
 	public bool c_isCharging = false;
 
@@ -18,8 +29,12 @@ public class ChargeJumpScript : MonoBehaviour
 	void Start()
 	{
 		rb = GetComponent<Rigidbody2D>();
-		movement = GetComponent<MovementPrototypeController>();
+		
 		initialChargePower = chargePower;
+		
+		// initializing the charge jump meter
+		jumpMeter.SetMinCharge(chargePower);
+		jumpMeter.SetMaxCharge(maxJumpPower);
 	}
 
 
@@ -33,7 +48,7 @@ public class ChargeJumpScript : MonoBehaviour
 	{
 		if (jumpNow)
 		{
-			rb.AddForce(jumpDirection * chargePower * jumpPower, ForceMode2D.Impulse);
+			rb.AddForce(jumpDirection * chargePower * maxJumpPower, ForceMode2D.Impulse);
 			jumpNow = false;
 			chargePower = initialChargePower;
 		}
@@ -47,11 +62,13 @@ public class ChargeJumpScript : MonoBehaviour
 			if (Input.GetKey(KeyCode.Space))
 			{
 				chargePower += Time.deltaTime * 1.5f;
+				jumpMeter.SetCharge(chargePower);
+				
 				c_isCharging = true;
 
-				if (chargePower > jumpPower)
+				if (chargePower > maxJumpPower)
 				{
-					chargePower = jumpPower;
+					chargePower = maxJumpPower;
 				}
 			}
 
