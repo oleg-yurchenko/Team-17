@@ -1038,5 +1038,9 @@ PrefabInstance:
       propertyPath: c_airMoveForceMultiplier
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 8101441948097134214, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
