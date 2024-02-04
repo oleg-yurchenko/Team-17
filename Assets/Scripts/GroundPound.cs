@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class GroundPound : MonoBehaviour
 {
+    [SerializeField] private Transform checkGroundSphere;
     public float c_poundForceMultiplier;
     public bool isPounding;
     public bool canPound;
@@ -90,8 +91,22 @@ public class GroundPound : MonoBehaviour
         //print("delta time: " + Time.fixedDeltaTime);
 
         //cast ray to check if poundDistance away from the ground
-        RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0f, Vector2.down, 0f, groundLayer);
+        //RaycastHit2D hit = Physics2D.BoxCast(transform.position, boxSize, 0f, Vector2.down, 0f, groundLayer);
+        bool checkGround = Physics2D.CircleCast(checkGroundSphere.position, .5f, Vector2.down, .5f, groundLayer);
         //not near ground - can pound
+        if (checkGround) {
+            canPound = false;
+            isPounding = false;
+            renderer.color = Color.white;
+        } else {
+            // cant pound if already pounding
+            if (isPounding == false)
+            {
+                canPound = true;
+                renderer.color = Color.red;
+            }
+        }
+        /*
         if (hit.collider == null)
         {
             // cant pound if already pounding
@@ -107,6 +122,7 @@ public class GroundPound : MonoBehaviour
             isPounding = false;
             renderer.color = Color.white;
         }
+        */
         
        
 

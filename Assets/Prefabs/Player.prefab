@@ -440,6 +440,7 @@ GameObject:
   - component: {fileID: 7974182450257087104}
   - component: {fileID: 4675253735484317481}
   - component: {fileID: 4453518549398254723}
+  - component: {fileID: 8343301862460832619}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -597,9 +598,33 @@ MonoBehaviour:
   checkGroundSphere: {fileID: 139987498264204023}
   groundMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 320
   maxJumpPower: 3
   chargePower: 1
   jumpDirection: {x: 0, y: 1}
   jumpMeter: {fileID: 6460250503388544607}
   c_isCharging: 0
+--- !u!114 &8343301862460832619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897031926090141874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a3b67e49d908836459acb899e8f69426, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  checkGroundSphere: {fileID: 139987498264204023}
+  c_poundForceMultiplier: 7.5
+  isPounding: 0
+  canPound: 0
+  isFrozen: 0
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  poundDistance: 1
+  freezeTimeThreshold: 0.5
+  boxSize: {x: 1, y: 2.5}
+  doubleTapTimeThreshold: 0.5

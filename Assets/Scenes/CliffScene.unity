@@ -168,24 +168,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &715187135
+--- !u!1001 &427860673
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 378783718712531751, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4452570109798313085, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4452570109798313085, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 7.66
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452570109798313085, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 3.01
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452570109798313085, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_LocalPosition.z
@@ -223,56 +227,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: c_speedLimit
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: c_jumpForceMultiplier
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: c_moveForceMultiplier
-      value: 18
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101441948097134214, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: m_LinearDrag
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8101441948097134214, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: m_AngularDrag
-      value: 200
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
---- !u!1 &1056590546 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6897031926090141874, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-  m_PrefabInstance: {fileID: 715187135}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1056590547
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1056590546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3b67e49d908836459acb899e8f69426, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  c_poundForceMultiplier: 7.5
-  isPounding: 0
-  canPound: 0
-  isFrozen: 0
-  groundLayer:
-    serializedVersion: 2
-    m_Bits: 64
-  poundDistance: 1
-  freezeTimeThreshold: 0.5
-  boxSize: {x: 1, y: 2.5}
-  doubleTapTimeThreshold: 0.5
 --- !u!1 &1478815609
 GameObject:
   m_ObjectHideFlags: 0
