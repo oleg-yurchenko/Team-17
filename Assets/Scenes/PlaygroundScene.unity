@@ -991,24 +991,16 @@ TilemapCollider2D:
   m_Offset: {x: 0, y: 0}
   m_MaximumTileChangeCount: 1000
   m_ExtrusionFactor: 0.00001
---- !u!1001 &715187135
+--- !u!1001 &1349887543
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 768011199404458239, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: m_Color.b
-      value: 0.29464385
-      objectReference: {fileID: 0}
-    - target: {fileID: 768011199404458239, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: m_Color.g
-      value: 0.6981132
-      objectReference: {fileID: 0}
-    - target: {fileID: 768011199404458239, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: m_Color.r
-      value: 0.121840514
+    - target: {fileID: 378783718712531751, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4452570109798313085, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_RootOrder
@@ -1058,56 +1050,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 6897031926090141874, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: wallSpeed
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: c_wallSpeed
-      value: -0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: c_speedLimit
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: c_jumpForceMultiplier
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: c_moveForceMultiplier
+    - target: {fileID: 8101441948097134214, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-      propertyPath: c_airMoveForceMultiplier
-      value: 0.7
+    - target: {fileID: 8101441948097134214, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: m_LinearDrag
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
---- !u!1 &972162200 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6897031926090141874, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
-  m_PrefabInstance: {fileID: 715187135}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &972162207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 972162200}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44ac95a9ce14f0349b1758219a0859ad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  c_wallJumpForceMultiplier: 7
-  c_wallHorizontalVelocity: 3
-  movementDisableFrames: 15
 --- !u!1 &1478815609
 GameObject:
   m_ObjectHideFlags: 0
@@ -1120,7 +1072,7 @@ GameObject:
   - component: {fileID: 1478815612}
   - component: {fileID: 1478815611}
   - component: {fileID: 1478815613}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ground
   m_TagString: Ground
   m_Icon: {fileID: 0}
@@ -1482,7 +1434,7 @@ TilemapCollider2D:
   m_GameObject: {fileID: 1478815609}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: ebd3fc0403c9f1d4780149d45f97ef9f, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0

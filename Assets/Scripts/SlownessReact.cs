@@ -33,7 +33,7 @@ public class SlownessReact : MonoBehaviour
     // }
     void OnCollisionStay2D(Collision2D col) {
         if (col.gameObject.name == "Tilemap") {
-            Debug.Log("This is a tile map");
+            //Debug.Log("This is a tile map");
             c_speed /= 1.001f;
         } //else if (col.gameObject.name == "Tilemap (1)") {
         //     Debug.Log("This is another tile map");
