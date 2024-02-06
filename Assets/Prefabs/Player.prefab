@@ -442,6 +442,7 @@ GameObject:
   - component: {fileID: 4453518549398254723}
   - component: {fileID: 8343301862460832619}
   - component: {fileID: 7722912576367109589}
+  - component: {fileID: 8462452509585832696}
   - component: {fileID: 4410662159417817118}
   m_Layer: 0
   m_Name: Player
@@ -648,6 +649,21 @@ MonoBehaviour:
   c_wallJumpForceMultiplier: 7
   c_wallHorizontalVelocity: 3
   movementDisableFrames: 15
+--- !u!114 &8462452509585832696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897031926090141874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ccebb94d540e4460a5ba5fdac73bd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dash_force: 10
+  dash_duration: 0.5
+  dash_cooldown: 2
 --- !u!95 &4410662159417817118
 Animator:
   serializedVersion: 4
