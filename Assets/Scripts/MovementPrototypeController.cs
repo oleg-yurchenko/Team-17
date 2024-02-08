@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MovementPrototypeController : MonoBehaviour
 {
+    public float c_originalMoveForceMultiplier;
     public float c_moveForceMultiplier;
     public float c_airMoveForceMultiplier;
     public float c_jumpForceMultiplier;
@@ -43,6 +44,7 @@ public class MovementPrototypeController : MonoBehaviour
         hasDoubleJumped = false;
 		animator = GetComponent<Animator>();
 		initialScale = transform.localScale;
+        c_originalMoveForceMultiplier = c_moveForceMultiplier;
     }
 
     // Update is called once per frame

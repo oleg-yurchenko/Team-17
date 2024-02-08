@@ -443,6 +443,7 @@ GameObject:
   - component: {fileID: 8343301862460832619}
   - component: {fileID: 7722912576367109589}
   - component: {fileID: 8462452509585832696}
+  - component: {fileID: 1100782111824700334}
   - component: {fileID: 4410662159417817118}
   m_Layer: 0
   m_Name: Player
@@ -569,6 +570,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8b994ab01c17b455d8e89e9a13945867, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  c_originalMoveForceMultiplier: 0
   c_moveForceMultiplier: 20
   c_airMoveForceMultiplier: 5
   c_jumpForceMultiplier: 8
@@ -664,6 +666,19 @@ MonoBehaviour:
   dash_force: 10
   dash_duration: 0.5
   dash_cooldown: 2
+--- !u!114 &1100782111824700334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6897031926090141874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44cea62cf471544128b59c3833c03f89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  c_speed: 0.001
 --- !u!95 &4410662159417817118
 Animator:
   serializedVersion: 4
