@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ground
   - Wall
+  - Slow
   layers:
   - Default
   - TransparentFX
@@ -14,8 +15,8 @@ TagManager:
   - Water
   - UI
   - Ground
-  - 
-  - 
+  - Wall
+  - Slow
   - 
   - 
   - 

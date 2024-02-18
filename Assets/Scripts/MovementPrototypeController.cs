@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class MovementPrototypeController : MonoBehaviour
 {
+    public float c_originalMoveForceMultiplier;
     public float c_moveForceMultiplier;
     public float c_airMoveForceMultiplier;
     public float c_jumpForceMultiplier;
@@ -22,6 +23,13 @@ public class MovementPrototypeController : MonoBehaviour
 	private bool isSlowing = false;
 	private float initialForce;
     public bool hasDoubleJumped;
+	private Animator animator;
+	private const float MOVING_ANIMATION_THRESHOLD = 0.5f;
+	private const float AIRBORNE_ANIMATION_THRESHOLD = 1.0f;
+	private Vector3 initialScale;
+	private int doubleJumpDelay = 0;
+	[SerializeField]
+	private const int DOUBLE_JUMP_THRESHOLD = 40;
     
     // Start is called before the first frame update
     void Start()
@@ -34,13 +42,24 @@ public class MovementPrototypeController : MonoBehaviour
         jumpTime = 0.2f;
 		initialForce = c_moveForceMultiplier;
         hasDoubleJumped = false;
+		animator = GetComponent<Animator>();
+		initialScale = transform.localScale;
+        c_originalMoveForceMultiplier = c_moveForceMultiplier;
     }
 
     // Update is called once per frame
     void Update() {
+		body.rotation = 0.0f;
+		transform.eulerAngles = new Vector3(0,0,0);
 		ReducePlayerSpeed();
+		animator.SetBool("isGroundedMoving", Math.Abs(body.velocity.x) > MOVING_ANIMATION_THRESHOLD);
+		animator.SetBool("isAirborne", Math.Abs(body.velocity.y) > AIRBORNE_ANIMATION_THRESHOLD);
+		if (!onWall())
+			if (body.velocity.x < 0.0f)
+				transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
+			else
+				transform.localScale = initialScale;
     }
-    //not sure how to implement this code in fixed update (input.getkeydown doesn't work very well)
 
     // FixedUpdate used for physics calculations
     void FixedUpdate()
@@ -48,7 +67,7 @@ public class MovementPrototypeController : MonoBehaviour
         disabled--;
         if (onWall() && body.velocity.y < c_wallSpeed)
         {
-            Debug.Log("yes");
+            //Debug.Log("yes");
             body.velocity = new Vector2(body.velocity.x, c_wallSpeed);
             hasJumped = false;
         }
@@ -60,26 +79,27 @@ public class MovementPrototypeController : MonoBehaviour
         float horizontalMultiplier = (inAir ? c_airMoveForceMultiplier : c_moveForceMultiplier);
         if (Input.GetKey("a") && disabled <= 0)
         {
-            // horizontalForce += Vector2.left * horizontalMultiplier;
-            body.velocity = new Vector2(-c_speedLimit*horizontalMultiplier, body.velocity.y);
+            horizontalForce += Vector2.left * horizontalMultiplier;
+            //body.velocity = new Vector2(-c_speedLimit*horizontalMultiplier, body.velocity.y);
         }
         if (Input.GetKey("d") && disabled <= 0)
         {
-            // horizontalForce += Vector2.right * horizontalMultiplier;
-            body.velocity = new Vector2(c_speedLimit*horizontalMultiplier, body.velocity.y);
+            horizontalForce += Vector2.right * horizontalMultiplier;
+            //body.velocity = new Vector2(c_speedLimit*horizontalMultiplier, body.velocity.y);
         }
-        if (playerState == "ground" && !hasJumped && Input.GetKey("w")) {
+        if (Input.GetKey("w")) {
             verticalForce += Vector2.up * c_jumpForceMultiplier;
             Jump();
-            playerState = "air";
-            hasJumped = true;
         } else if (body.velocity.y == 0.0f) {
             hasJumped = false;
             hasDoubleJumped = false;
+			doubleJumpDelay = 0;
         }
         
-        // if (body.velocity.x <= c_speedLimit)
-            // body.AddForce(horizontalForce);
+        if (body.velocity.x <= c_speedLimit)
+            body.AddForce(horizontalForce);
+		if (hasJumped)
+			doubleJumpDelay++;
     }
 
     void OnCollisionEnter2D(Collision2D collision)
@@ -157,15 +177,16 @@ public class MovementPrototypeController : MonoBehaviour
     void Jump() 
     {
         if (!hasJumped) {
-                body.AddForce(verticalForce, ForceMode2D.Impulse);
-                hasJumped = true;
-            } 
-			/*
-            else if (!hasDoubleJumped) {
-                body.AddForce(verticalForce, ForceMode2D.Impulse);
-                hasDoubleJumped = true;
-            }
-			*/
+            body.AddForce(verticalForce, ForceMode2D.Impulse);
+            hasJumped = true;
+			playerState = "air";
+        }
+        else if (!hasDoubleJumped && doubleJumpDelay >= DOUBLE_JUMP_THRESHOLD && playerState == "air") {
+            body.AddForce(verticalForce, ForceMode2D.Impulse);
+            hasDoubleJumped = true;
+			doubleJumpDelay = 0;
+			playerState = "air";
+        }
     }
     
 	public void ReducePlayerSpeed()
@@ -173,11 +194,10 @@ public class MovementPrototypeController : MonoBehaviour
 		if (chargeJump.c_isCharging && !isSlowing)
 		{
 			c_moveForceMultiplier /= 2.0f;
-			Debug.Log("Slowing Player!");
+			//.Log("Slowing Player!");
 			
 			isSlowing = true; // Mark that the speed reduction has occurred
 		}
-
 		else if (!chargeJump.c_isCharging && isSlowing)
 		{
 			c_moveForceMultiplier = initialForce;

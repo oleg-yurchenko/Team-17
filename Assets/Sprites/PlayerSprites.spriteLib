@@ -1,0 +1,69 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &1
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a5e6fedc2472449cead18ef23b5cb30d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Library:
+  - m_Name: Idle
+    m_Hash: 2081823275
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: idle1
+      m_Hash: -287494167
+      m_Sprite: {fileID: 21300000, guid: f3465bfd29b8c45518e2015d622ad9bf, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: f3465bfd29b8c45518e2015d622ad9bf, type: 3}
+    - m_Name: idle2
+      m_Hash: 2010414675
+      m_Sprite: {fileID: 21300000, guid: 071cd4718f39a4bab8a227f367943a9e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 071cd4718f39a4bab8a227f367943a9e, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 2
+  - m_Name: Jump
+    m_Hash: 125937960
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: jump1
+      m_Hash: 2008017376
+      m_Sprite: {fileID: 21300000, guid: 016288abb25ba4e0f8d1d7995d6bab92, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 016288abb25ba4e0f8d1d7995d6bab92, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
+  - m_Name: Run
+    m_Hash: 1748754976
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: run1
+      m_Hash: 417880995
+      m_Sprite: {fileID: 21300000, guid: dff6c0af4e93a486aaf259508f93dd9b, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: dff6c0af4e93a486aaf259508f93dd9b, type: 3}
+    - m_Name: run2
+      m_Hash: -2115958247
+      m_Sprite: {fileID: 21300000, guid: 6adfd16f5b23c458f89a4494e86541d7, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 6adfd16f5b23c458f89a4494e86541d7, type: 3}
+    - m_Name: run3
+      m_Hash: -152683889
+      m_Sprite: {fileID: 21300000, guid: e74aec36bc58c4e169b86f54627e098c, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: e74aec36bc58c4e169b86f54627e098c, type: 3}
+    - m_Name: run4
+      m_Hash: 1753394988
+      m_Sprite: {fileID: 21300000, guid: 5a6e3ca69f5984dfbb07589605ccbafa, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 5a6e3ca69f5984dfbb07589605ccbafa, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 4
+  m_PrimaryLibraryGUID: 
