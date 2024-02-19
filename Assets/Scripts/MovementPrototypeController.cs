@@ -194,7 +194,7 @@ public class MovementPrototypeController : MonoBehaviour
 		if (chargeJump.c_isCharging && !isSlowing)
 		{
 			c_moveForceMultiplier /= 2.0f;
-			//.Log("Slowing Player!");
+			Debug.Log("Slowing Player!");
 			
 			isSlowing = true; // Mark that the speed reduction has occurred
 		}
