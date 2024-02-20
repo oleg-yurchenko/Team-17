@@ -1,3 +1,4 @@
+using System;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -62,6 +63,8 @@ public class ChargeJumpScript : MonoBehaviour
 			if (Input.GetKey(KeyCode.Space))
 			{
 				chargePower += Time.deltaTime * 1.5f;
+				Debug.Log(chargePower);
+				
 				jumpMeter.SetCharge(chargePower);
 				
 				c_isCharging = true;
@@ -71,8 +74,7 @@ public class ChargeJumpScript : MonoBehaviour
 					chargePower = maxJumpPower;
 				}
 			}
-
-			if (Input.GetKeyUp(KeyCode.Space))
+			else if (Input.GetKeyUp(KeyCode.Space))
 			{
 				jumpNow = true;
 				c_isCharging = false;
