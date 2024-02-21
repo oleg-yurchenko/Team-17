@@ -14,6 +14,7 @@ public class DashPrototypeController : MonoBehaviour
     private float dash_timer; // Keeps track of the time elapsed during a dash
     private Rigidbody2D body;
     private bool dash_direction; // if T = right, F = left
+    private float deceleration;
 
     // Start is called before the first frame update
     void Start()
@@ -23,6 +24,7 @@ public class DashPrototypeController : MonoBehaviour
         is_dashing = false;
         dash_timer = 0.0f;
         originalColor = renderer.color;
+        deceleration = 0.1f;
     }
 
     // Update is called once per frame
@@ -74,13 +76,17 @@ public class DashPrototypeController : MonoBehaviour
         {
             if(!dash_direction && Input.GetKey("d")){
                 // obj freeze
-                body.velocity = new Vector2();
+                // body.velocity = new Vector2();
+                // obj slow
+                body.velocity *= (1 - deceleration); 
                 StopDash();
                 return;
             }
             if(dash_direction && Input.GetKey("a")){
                 // obj freeze
-                body.velocity = new Vector2();
+                // body.velocity = new Vector2();
+                // obj slow
+                body.velocity *= (1 - deceleration); 
                 StopDash();
                 return;
             }
@@ -122,7 +128,9 @@ public class DashPrototypeController : MonoBehaviour
     {
         is_dashing = false;
         // Debug.Log("STOP?");
-        body.velocity = new Vector2(0, body.velocity.y); // x axis stop
+        // body.velocity = new Vector2(0, body.velocity.y); // x axis stop
+        // body.velocity.x *= (1 - deceleration);
+        body.velocity = new Vector2((body.velocity.x * (1 - deceleration)), body.velocity.y); // x axis slow
         
         dash_timer = 0.0f;
         cooldown_timer = 0.0f;
