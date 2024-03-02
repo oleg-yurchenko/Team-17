@@ -14,4 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CliffScene.unity
     guid: 3520eaca225230a42826d3f24ee165b9
+  - enabled: 1
+    path: Assets/Scenes/TutorialLevel.unity
+    guid: 608fbc07c4262431c888e414e4cc1581
   m_configObjects: {}
