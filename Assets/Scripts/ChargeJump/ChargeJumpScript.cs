@@ -63,7 +63,6 @@ public class ChargeJumpScript : MonoBehaviour
 			if (Input.GetKey(KeyCode.Space))
 			{
 				chargePower += Time.deltaTime * 1.5f;
-				Debug.Log(chargePower);
 				
 				jumpMeter.SetCharge(chargePower);
 				
