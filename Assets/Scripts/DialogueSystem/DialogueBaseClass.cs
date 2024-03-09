@@ -10,7 +10,7 @@ namespace DialogueSystem
         // whether the dialogue is finished or not
         public bool finished{get; private set;} // don want anyone to be able to change it outside
         
-        protected IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delayText, float delayBetweenLines) // showing letters one by one with a lil delayText
+        protected IEnumerator WriteText(string input, Text textHolder, Color textColor, Font textFont, float delayText, float delayBetweenLines = 1.0f) // showing letters one by one with a lil delayText
         {
             textHolder.color = textColor;
             textHolder.font = textFont;
@@ -24,7 +24,8 @@ namespace DialogueSystem
                 yield return new WaitForSeconds(delayText); // each letter shows up in the textHolder box 0.1s by 0.1s
             }
 
-            yield return new WaitForSeconds(delayBetweenLines); // some time between lines
+            // yield return new WaitForSeconds(delayBetweenLines); // some time between lines
+            yield return new WaitUntil(() => Input.GetMouseButton(0)); // player has to click their mouse to move forward to the next line
 
             finished = true; // our line is finished when the loop is finished
 

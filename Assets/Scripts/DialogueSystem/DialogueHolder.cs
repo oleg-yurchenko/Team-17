@@ -15,10 +15,12 @@ namespace DialogueSystem
 
         private IEnumerator dialogueSquence() // loop all the obj
         {
-            Deactivate(); // when u activate one dialogue line, u should deactivate the others
+            // Deactivate(); // when u activate one dialogue line, u should deactivate the others
             
             for(int i = 0; i < transform.childCount; i++)
             {
+                Deactivate(); // when u activate one dialogue line, u should deactivate the others
+                
                 // GameObject childObject = transform.GetChild(i).gameObject;
                 // DialogueLine dialogueLine = childObject.GetComponent<DialogueLine>();
 
@@ -31,7 +33,8 @@ namespace DialogueSystem
                 // yield return new WaitUntil(() => dialogueLine.finished);
                 yield return new WaitUntil(()=> transform.GetChild(i).GetComponent<DialogueLine>().finished); 
 
-                transform.GetChild(i).gameObject.SetActive(false); 
+                // transform.GetChild(i).gameObject.SetActive(false); 
+
                 // // tell the dialogue sequence when exactly is the dialogue finished so we can activate the next one
 
                 // if (dialogueLine != null)
@@ -50,7 +53,7 @@ namespace DialogueSystem
                 //     Debug.LogError("DialogueLine component not found on GameObject: " + childObject.name, childObject);
                 // }
             }
-
+            gameObject.SetActive(false); 
 
         }
 
