@@ -23,12 +23,12 @@ namespace DialogueSystem
                 // DialogueLine dialogueLine = childObject.GetComponent<DialogueLine>();
 
                 // // Set up the callback for the finished event
-                // // dialogueLine.SetDialogueFinishedCallback(ActivateNextDialogue);
+                // dialogueLine.SetDialogueFinishedCallback(ActivateNextDialogue);
                 // // Activate the dialogue line
-                // // dialogueLine.gameObject.SetActive(true);
+                // dialogueLine.gameObject.SetActive(true);
                 transform.GetChild(i).gameObject.SetActive(true); 
                 // // Wait until the current dialogue line finishes
-                // // yield return new WaitUntil(() => dialogueLine.finished);
+                // yield return new WaitUntil(() => dialogueLine.finished);
                 yield return new WaitUntil(()=> transform.GetChild(i).GetComponent<DialogueLine>().finished); 
 
                 transform.GetChild(i).gameObject.SetActive(false); 

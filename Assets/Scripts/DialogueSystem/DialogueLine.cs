@@ -14,7 +14,9 @@ namespace DialogueSystem
         [SerializeField]private Font textFont;
 
         [Header("Time Parameters")]
-        [SerializeField]private float delay;
+        [SerializeField]private float delayText;
+        [SerializeField]private float delayBetweenLines;
+
 
         [Header("Input Images")]
         [SerializeField]private Sprite dialogueSprite;
@@ -40,9 +42,6 @@ namespace DialogueSystem
                 Debug.LogError("1 Text component not found on the GameObject.", this);
             }
 
-
-            // imageHolder.sprite = dialogueSprite;
-            // imageHolder.preserveAspect = true;
         }
 
 
@@ -52,7 +51,7 @@ namespace DialogueSystem
             if (textHolder != null)
             {
                 textHolder.text = ""; // Reset text value
-                StartCoroutine(WriteText(input, textHolder, textColor, textFont, delay));
+                StartCoroutine(WriteText(input, textHolder, textColor, textFont, delayText, delayBetweenLines));
             }
             else
             {
