@@ -90,11 +90,12 @@ public class MovementPrototypeController : MonoBehaviour
         if (Input.GetKey("w")) {
             verticalForce += Vector2.up * c_jumpForceMultiplier;
             Jump();
-        } else if (body.velocity.y == 0.0f) {
+        } else if (playerState == "ground") {
             hasJumped = false;
             hasDoubleJumped = false;
 			doubleJumpDelay = 0;
         }
+        // switched hasJumped = false condition to the grounded player
         
         if (body.velocity.x <= c_speedLimit)
             body.AddForce(horizontalForce);
