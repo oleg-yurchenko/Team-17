@@ -13,23 +13,67 @@ namespace DialogueSystem
         [SerializeField]private Color textColor;
         [SerializeField]private Font textFont;
 
+        [Header("Time Parameters")]
+        [SerializeField]private float delay;
+
+        [Header("Input Images")]
+        [SerializeField]private Sprite dialogueSprite;
+        [SerializeField]private Image imageHolder;
+
+        // private System.Action dialogueFinishedCallback;
+
+
         private void Awake()
         {
-            textHolder = GetComponent<Text>();
+            textHolder = GetComponent<UnityEngine.UI.Text>();
+            // textHolder.text = ""; // in case we put sth in Unity and forgot to delete it
 
             // StartCoroutine(WriteText(input, textHolder));
             if (textHolder != null)
             {
                 textHolder.text = ""; // Reset text value
-                StartCoroutine(WriteText(input, textHolder, textColor, textFont));
+                imageHolder.sprite = dialogueSprite;
+                imageHolder.preserveAspect = true;
             }
             else
             {
-                Debug.LogError("Text component not found on the GameObject.", this);
+                Debug.LogError("1 Text component not found on the GameObject.", this);
             }
+
+
+            // imageHolder.sprite = dialogueSprite;
+            // imageHolder.preserveAspect = true;
         }
+
+
+        private void Start()
+        {
+
+            if (textHolder != null)
+            {
+                textHolder.text = ""; // Reset text value
+                StartCoroutine(WriteText(input, textHolder, textColor, textFont, delay));
+            }
+            else
+            {
+                Debug.LogError("2 Text component not found on the GameObject.", this);
+            }
+
         
-    
+        }
+
+        // private void OnDialogueFinished()
+        // {
+        //     // Invoke the callback to signal that this dialogue is finished
+        //     dialogueFinishedCallback?.Invoke();
+        // }
+
+        // // Set the callback for the finished event
+        // public void SetDialogueFinishedCallback(System.Action callback)
+        // {
+        //     dialogueFinishedCallback = callback;
+        // }
+        
     }
 
 }
