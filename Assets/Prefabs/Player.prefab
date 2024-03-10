@@ -760,7 +760,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Play Tutorial
+  m_Text: Restart
 --- !u!114 &2186877918290813936
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -789,7 +789,7 @@ GameObject:
   - component: {fileID: 5830314931239413783}
   - component: {fileID: 6907922882813293830}
   m_Layer: 5
-  m_Name: PlayTutorial
+  m_Name: RestartTutorial
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
