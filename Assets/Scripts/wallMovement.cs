@@ -29,9 +29,9 @@ public class wallMovement : MonoBehaviour
         playerState = something.getPlayerState();
         if (!something.getHasJumped())
         {
-            Debug.Log("passed jump");
+            // Debug.Log("passed jump");
         }
-        Debug.Log(playerState);
+        // Debug.Log(playerState);
 
 
         if (playerState == "wallLeft" && !something.getHasJumped() && Input.GetKey("w") /*&& Input.GetKey("d")*/)
