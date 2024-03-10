@@ -79,8 +79,7 @@ public class MovementPrototypeController : MonoBehaviour
     private int doubleJumpDelay = 0;
     [SerializeField]
     private const int DOUBLE_JUMP_THRESHOLD = 40;
-    private int coins = 0;
-
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -185,19 +184,6 @@ public class MovementPrototypeController : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             playerState = "ground";
-        }
-        if (collision.gameObject.tag == "Coin")
-        {
-            coins++;
-            if (coins == 1)
-            {
-                Debug.Log("You have " + coins + " coin!");
-            }
-            else
-            {
-                Debug.Log("You have " + coins + " coins!");
-            }
-            Destroy(collision.gameObject);
         }
     }
 
