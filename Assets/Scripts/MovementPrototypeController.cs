@@ -90,7 +90,8 @@ public class MovementPrototypeController : MonoBehaviour
         if (Input.GetKey("w")) {
             verticalForce += Vector2.up * c_jumpForceMultiplier;
             Jump();
-        } else if (playerState == "ground") {
+        //} else if (playerState == "ground") {
+        } else if (body.velocity.y == 0.0f && playerState == "ground") {
             hasJumped = false;
             hasDoubleJumped = false;
 			doubleJumpDelay = 0;
