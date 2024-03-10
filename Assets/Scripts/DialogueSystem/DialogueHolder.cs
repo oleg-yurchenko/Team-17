@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 namespace DialogueSystem
 {
     public class DialogueHolder : MonoBehaviour
     {
+        [Header("Next Scene")]
+        [SerializeField] private string nextSceneName; // Serialize the next scene name
 
         private void Awake()
         {
@@ -20,7 +23,7 @@ namespace DialogueSystem
             for(int i = 0; i < transform.childCount; i++)
             {
                 Deactivate(); // when u activate one dialogue line, u should deactivate the others
-                
+
                 // GameObject childObject = transform.GetChild(i).gameObject;
                 // DialogueLine dialogueLine = childObject.GetComponent<DialogueLine>();
 
@@ -53,7 +56,9 @@ namespace DialogueSystem
                 //     Debug.LogError("DialogueLine component not found on GameObject: " + childObject.name, childObject);
                 // }
             }
-            gameObject.SetActive(false); 
+            // gameObject.SetActive(false); 
+            // All dialogues are finished, load the next scene
+            LoadNextScene();
 
         }
 
@@ -83,6 +88,21 @@ namespace DialogueSystem
                 //     Debug.LogError(" 2" + transform.GetChild(i).gameObject.activeSelf);
                 // }
             }
+        }
+
+        private void LoadNextScene()
+        {
+            // Load the next scene
+            SceneManager.LoadScene(nextSceneName);
+            // if (nextScene.IsValid())
+            // {
+            //     // Load the next scene using the SceneReference
+            //     SceneManager.LoadScene(nextScene.ScenePath);
+            // }
+            // else
+            // {
+            //     Debug.LogError("Invalid SceneReference for next scene in DialogueHolder.");
+            // }
         }
     }
 
