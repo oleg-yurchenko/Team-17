@@ -5,9 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class DieOnTouch : MonoBehaviour
 {
-    public int Respawn;
+    private TrackObjects trackObject;
     
     // This method is called when another collider enters the trigger collider attached to this object
+
+    void Start() {
+        this.trackObject = transform.parent.parent.parent.GetComponent<TrackObjects>();
+    }
     private void OnTriggerEnter2D(Collider2D collision)
     {
         // Check if the colliding object is the player
@@ -15,7 +19,7 @@ public class DieOnTouch : MonoBehaviour
         {
             // Debug.Log("touching death");
             // Load the initial scene
-            SceneManager.LoadScene(Respawn);
+            trackObject.ResetLevel();
         }
     }
 }
