@@ -49,7 +49,6 @@ public class BlinkPrototypeController : MonoBehaviour
 		{
 			isBlinking = true;
 			canBlink = false;
-			collider.enabled = false;
 		}
 
 		//print(collider.OverlapCollider(new ContactFilter2D().NoFilter(), new Collider2D[1]).ToString());
@@ -65,5 +64,11 @@ public class BlinkPrototypeController : MonoBehaviour
 			collider.enabled = true;
 		}
 
+	}
+
+	void OnCollisionEnter2D(Collision2D col) {
+		if (isBlinking && (col.gameObject.tag != "Respawn")) {
+			collider.enabled = false;
+		}
 	}
 }
