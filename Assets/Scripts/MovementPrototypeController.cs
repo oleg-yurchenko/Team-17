@@ -65,6 +65,10 @@ public class MovementPrototypeController : MonoBehaviour
     void FixedUpdate()
     {
         disabled--;
+        if (disabled > 0)
+        {
+            return;
+        }
         if (onWall() && body.velocity.y < c_wallSpeed)
         {
             //Debug.Log("yes");
@@ -105,6 +109,7 @@ public class MovementPrototypeController : MonoBehaviour
 
     void OnCollisionEnter2D(Collision2D collision)
     {
+        // for wall
         if (collision.gameObject.tag == "Wall")
         {
             foreach (ContactPoint2D contact in collision.contacts)
@@ -128,6 +133,18 @@ public class MovementPrototypeController : MonoBehaviour
                 }
             }
             playerState = "ground";
+        }
+        // for obstacle
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            // reseting player location
+            reset((float)0.0, (float)5.0);
+            body.velocity = Vector2.zero;
+            body.angularVelocity = 0f;
+            setDisabled(60);
+            // reseting dragon location
+            // dragon.reset();
+
         }
         if (collision.gameObject.tag == "Ground")
         {
@@ -205,5 +222,11 @@ public class MovementPrototypeController : MonoBehaviour
 			isSlowing = false;
 		}
 	}
+
+    //tempory reset function
+    public void reset(float x, float y)
+    {
+        transform.position = new Vector2(x, y);
+    }
 }
 // can think about increasing gravity at the height of the jump to make it 'feel' better
