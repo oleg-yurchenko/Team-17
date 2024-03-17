@@ -65,6 +65,10 @@ public class MovementPrototypeController : MonoBehaviour
     void FixedUpdate()
     {
         disabled--;
+        if (disabled > 0)
+        {
+            return;
+        }
         if (onWall() && body.velocity.y < c_wallSpeed)
         {
             //Debug.Log("yes");
@@ -135,6 +139,9 @@ public class MovementPrototypeController : MonoBehaviour
         {
             // reseting player location
             reset((float)0.0, (float)5.0);
+            body.velocity = Vector2.zero;
+            body.angularVelocity = 0f;
+            setDisabled(60);
             // reseting dragon location
             // dragon.reset();
 
