@@ -122,12 +122,14 @@ public class MovementPrototypeController : MonoBehaviour
                         // Collision with left side
                         playerState = "wallLeft";
                         // Debug.Log("Collided on the left side");
+                        setDoubleJumpDelay(0);
                     }
                     else if (contact.normal.x < 0)
                     {
                         // Collision with right side
                         playerState = "wallRight";
                         // Debug.Log("Collided on the right side");
+                        setDoubleJumpDelay(0);
                     }
                     return;
                 }
@@ -190,6 +192,11 @@ public class MovementPrototypeController : MonoBehaviour
     public void setDisabled(int frames)
     {
         disabled = frames;
+    }
+
+    public void setDoubleJumpDelay(int num)
+    {
+        doubleJumpDelay = num;
     }
 
     void Jump() 
