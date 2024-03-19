@@ -30,6 +30,10 @@ public class MovementPrototypeController : MonoBehaviour
 	private int doubleJumpDelay = 0;
 	[SerializeField]
 	private const int DOUBLE_JUMP_THRESHOLD = 40;
+
+    [SerializeField] private GameObject levelObject;
+    private TrackObjects trackObject;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -45,6 +49,7 @@ public class MovementPrototypeController : MonoBehaviour
 		animator = GetComponent<Animator>();
 		initialScale = transform.localScale;
         c_originalMoveForceMultiplier = c_moveForceMultiplier;
+        trackObject = levelObject.GetComponent<TrackObjects>();
     }
 
     // Update is called once per frame
@@ -140,10 +145,7 @@ public class MovementPrototypeController : MonoBehaviour
         if (collision.gameObject.tag == "Obstacle")
         {
             // reseting player location
-            reset((float)0.0, (float)5.0);
-            body.velocity = Vector2.zero;
-            body.angularVelocity = 0f;
-            setDisabled(60);
+            trackObject.ResetLevel();
             // reseting dragon location
             // dragon.reset();
 
