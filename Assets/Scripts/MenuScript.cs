@@ -16,14 +16,15 @@ public class MenuScript : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
-            } else
+            }
+            else
             {
                 Pause();
             }
         }
     }
 
-    
+
     public void Resume()
     {
         mainMenuUI.SetActive(false);
@@ -53,5 +54,10 @@ public class MenuScript : MonoBehaviour
     public void OpenOptions()
     {
         Debug.Log("Options menu opened");
+    }
+
+    public void playScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
