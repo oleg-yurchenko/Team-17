@@ -10,14 +10,15 @@ public class MovementPrototypeController : MonoBehaviour
     public float c_airMoveForceMultiplier;
     public float c_jumpForceMultiplier;
     public float c_speedLimit;
-
     public float c_wallSpeed;
+
     private Vector2 horizontalForce = new Vector2();
     private Vector2 verticalForce = new Vector2();
     private Rigidbody2D body;
     private int disabled;
     private string playerState; // "air" for jumping, "ground" for on ground, "wall" for on the wall
-	private ChargeJumpScript chargeJump;
+	
+    private ChargeJumpScript chargeJump;
     public bool hasJumped;
     private float jumpTime;
 	private bool isSlowing = false;
@@ -28,7 +29,11 @@ public class MovementPrototypeController : MonoBehaviour
 	private const float AIRBORNE_ANIMATION_THRESHOLD = 1.0f;
 	private Vector3 initialScale;
 	private int doubleJumpDelay = 0;
-	[SerializeField]
+ 
+    public const float STOP_THRESHOLD = 0.1f; // Threshold below which player is considered stopped
+	public const float decelerationRate = 1.5f; // Rate at which the player decelerates when speed is below threshold
+    
+    [SerializeField]
 	private const int DOUBLE_JUMP_THRESHOLD = 40;
     
     // Start is called before the first frame update
@@ -100,6 +105,13 @@ public class MovementPrototypeController : MonoBehaviour
             hasDoubleJumped = false;
 			doubleJumpDelay = 0;
         }
+
+        // Gradually slow down the player when speed is below threshold or there is no horizontal input
+        if (Mathf.Abs(body.velocity.x) < STOP_THRESHOLD || (!Input.GetKey("a") && !Input.GetKey("d")))
+        {
+            body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, Time.fixedDeltaTime * decelerationRate);
+        }
+
         
         if (body.velocity.x <= c_speedLimit)
             body.AddForce(horizontalForce);
