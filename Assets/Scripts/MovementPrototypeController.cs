@@ -31,7 +31,7 @@ public class MovementPrototypeController : MonoBehaviour
 	private int doubleJumpDelay = 0;
  
     public const float STOP_THRESHOLD = 0.1f; // Threshold below which player is considered stopped
-	public const float decelerationRate = 1.5f; // Rate at which the player decelerates when speed is below threshold
+	public const float decelerationRate = 2.0f; // Rate at which the player decelerates when speed is below threshold
     
     [SerializeField]
 	private const int DOUBLE_JUMP_THRESHOLD = 40;
@@ -106,8 +106,8 @@ public class MovementPrototypeController : MonoBehaviour
 			doubleJumpDelay = 0;
         }
 
-        // Gradually slow down the player when speed is below threshold or there is no horizontal input
-        if (Mathf.Abs(body.velocity.x) < STOP_THRESHOLD || (!Input.GetKey("a") && !Input.GetKey("d")))
+        // Gradually slow down the player when speed is below threshold or there is no horizontal input (when the player is on the ground)
+        if ((Mathf.Abs(body.velocity.x) < STOP_THRESHOLD || (!Input.GetKey("a") && !Input.GetKey("d"))) && playerState == "ground")
         {
             body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, Time.fixedDeltaTime * decelerationRate);
         }
