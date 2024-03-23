@@ -11,7 +11,7 @@ public class MovementPrototypeController : MonoBehaviour
     public float c_jumpForceMultiplier;
     public float c_speedLimit;
     public float c_wallSpeed;
-    public float c_STOP_THRESHOLD; // Threshold below which player is considered stopped
+    public float c_stopThreshold; // Threshold below which player is considered stopped
 	public float c_decelerationRate; // Rate at which the player decelerates when speed is below threshold
     
 
@@ -110,13 +110,12 @@ public class MovementPrototypeController : MonoBehaviour
         }
 
         // Gradually slow down the player when speed is below threshold or there is no horizontal input (when the player is on the ground)
-        // (Mathf.Abs(body.velocity.x) < STOP_THRESHOLD || (!Input.GetKey("a") && !Input.GetKey("d")))
         if (((!Input.GetKey("a") && !Input.GetKey("d"))) && playerState == "ground")
         {
             body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, Time.fixedDeltaTime * c_decelerationRate);
-            if ((Mathf.Abs(body.velocity.x) < c_STOP_THRESHOLD) && playerState == "ground")
+            if ( (playerState == "ground") && (Mathf.Abs(body.velocity.x) < c_stopThreshold))
             {
-                body.velocity = Vector3.zero;
+                body.velocity = Vector2.zero;
             }
 
         }

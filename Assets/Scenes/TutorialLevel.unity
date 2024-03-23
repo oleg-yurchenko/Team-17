@@ -11900,6 +11900,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: c_stopThreshold
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: c_STOP_THRESHOLD
       value: 0.4
       objectReference: {fileID: 0}
