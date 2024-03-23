@@ -31,7 +31,7 @@ public class MovementPrototypeController : MonoBehaviour
 	private int doubleJumpDelay = 0;
  
     public const float STOP_THRESHOLD = 0.1f; // Threshold below which player is considered stopped
-	public const float decelerationRate = 2.0f; // Rate at which the player decelerates when speed is below threshold
+	public const float decelerationRate = 5.0f; // Rate at which the player decelerates when speed is below threshold
     
     [SerializeField]
 	private const int DOUBLE_JUMP_THRESHOLD = 40;
