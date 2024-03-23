@@ -11,6 +11,9 @@ public class MovementPrototypeController : MonoBehaviour
     public float c_jumpForceMultiplier;
     public float c_speedLimit;
     public float c_wallSpeed;
+    public float c_STOP_THRESHOLD; // Threshold below which player is considered stopped
+	public float c_decelerationRate; // Rate at which the player decelerates when speed is below threshold
+    
 
     private Vector2 horizontalForce = new Vector2();
     private Vector2 verticalForce = new Vector2();
@@ -30,8 +33,8 @@ public class MovementPrototypeController : MonoBehaviour
 	private Vector3 initialScale;
 	private int doubleJumpDelay = 0;
  
-    public const float STOP_THRESHOLD = 0.4f; // Threshold below which player is considered stopped
-	public const float decelerationRate = 5.0f; // Rate at which the player decelerates when speed is below threshold
+    // public const float STOP_THRESHOLD = 0.4f; // Threshold below which player is considered stopped
+	// public const float decelerationRate = 5.0f; // Rate at which the player decelerates when speed is below threshold
     
     [SerializeField]
 	private const int DOUBLE_JUMP_THRESHOLD = 40;
@@ -110,8 +113,8 @@ public class MovementPrototypeController : MonoBehaviour
         // (Mathf.Abs(body.velocity.x) < STOP_THRESHOLD || (!Input.GetKey("a") && !Input.GetKey("d")))
         if (((!Input.GetKey("a") && !Input.GetKey("d"))) && playerState == "ground")
         {
-            body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, Time.fixedDeltaTime * decelerationRate);
-            if ((Mathf.Abs(body.velocity.x) < STOP_THRESHOLD) && playerState == "ground")
+            body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, Time.fixedDeltaTime * c_decelerationRate);
+            if ((Mathf.Abs(body.velocity.x) < c_STOP_THRESHOLD) && playerState == "ground")
             {
                 body.velocity = Vector3.zero;
             }
