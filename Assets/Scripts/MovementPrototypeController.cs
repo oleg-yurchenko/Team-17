@@ -109,11 +109,13 @@ public class MovementPrototypeController : MonoBehaviour
 			doubleJumpDelay = 0;
         }
 
-        // Gradually slow down the player when speed is below threshold or there is no horizontal input (when the player is on the ground)
+        // Gradually slow down the player when there is no horizontal input (when the player is on the ground)
         if (((!Input.GetKey("a") && !Input.GetKey("d"))) && playerState == "ground")
         {
-            body.velocity = Vector2.Lerp(body.velocity, Vector2.zero, Time.fixedDeltaTime * c_decelerationRate);
-            if ( (playerState == "ground") && (Mathf.Abs(body.velocity.x) < c_stopThreshold))
+            Vector2 targetVelocity = new Vector2(c_stopThreshold, body.velocity.y);
+            body.velocity = Vector2.Lerp(body.velocity, targetVelocity, Time.fixedDeltaTime * c_decelerationRate);
+            // Complete stop when speed is below threshold 
+            if ( (playerState == "ground") && (playerState != "air") && (playerState != "wall") && (Mathf.Abs(body.velocity.x) < c_stopThreshold))
             {
                 body.velocity = Vector2.zero;
             }
