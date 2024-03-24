@@ -13,13 +13,13 @@ public class MovementPrototypeController : MonoBehaviour
     public float c_wallSpeed;
     public float c_stopThreshold; // Threshold below which player is considered stopped
 	public float c_decelerationRate; // Rate at which the player decelerates when speed is below threshold
-    
+    // public bool onGround; // T for on ground, F for not on ground
 
     private Vector2 horizontalForce = new Vector2();
     private Vector2 verticalForce = new Vector2();
     private Rigidbody2D body;
     private int disabled;
-    private string playerState; // "air" for jumping, "ground" for on ground, "wall" for on the wall
+    private string playerState; // "air" for jumping, "ground" for on ground, "wallRight"&"wallLeft" for on the wall
 	
     private ChargeJumpScript chargeJump;
     public bool hasJumped;
@@ -109,13 +109,15 @@ public class MovementPrototypeController : MonoBehaviour
 			doubleJumpDelay = 0;
         }
 
+        // Debug.Log("1111111: " + playerState);
         // Gradually slow down the player when there is no horizontal input (when the player is on the ground)
-        if (((!Input.GetKey("a") && !Input.GetKey("d"))) && playerState == "ground")
+        if ((playerState == "ground") && (playerState != "air") && (playerState != "wallLeft") && (playerState != "wallRight") && (playerState != "") && (playerState != null) && ((!Input.GetKey("a") && !Input.GetKey("d"))))
         {
             Vector2 targetVelocity = new Vector2(c_stopThreshold, body.velocity.y);
             body.velocity = Vector2.Lerp(body.velocity, targetVelocity, Time.fixedDeltaTime * c_decelerationRate);
+            // Debug.Log("222222: " + playerState);
             // Complete stop when speed is below threshold 
-            if ( (playerState == "ground") && (playerState != "air") && (playerState != "wall") && (Mathf.Abs(body.velocity.x) < c_stopThreshold))
+            if ( (playerState == "ground") && (playerState != "air") && (playerState != "wallRight") && (playerState != "wallLeft") && (playerState != "") && (playerState != null) && (Mathf.Abs(body.velocity.x) < c_stopThreshold))
             {
                 body.velocity = Vector2.zero;
             }
@@ -154,7 +156,7 @@ public class MovementPrototypeController : MonoBehaviour
                     return;
                 }
             }
-            playerState = "ground";
+            // playerState = "ground"; // if collision.gameObject.tag == "Wall", playerState = "ground" ????
         }
         // for obstacle
         if (collision.gameObject.tag == "Obstacle")

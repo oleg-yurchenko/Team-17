@@ -11911,6 +11911,10 @@ PrefabInstance:
       propertyPath: c_decelerationRate
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 8462452509585832696, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: dash_force
+      value: 12
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
 --- !u!4 &646298569 stripped
