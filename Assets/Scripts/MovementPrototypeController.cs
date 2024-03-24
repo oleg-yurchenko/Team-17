@@ -119,7 +119,8 @@ public class MovementPrototypeController : MonoBehaviour
             // Complete stop when speed is below threshold 
             if ( (playerState == "ground") && (playerState != "air") && (playerState != "wallRight") && (playerState != "wallLeft") && (playerState != "") && (playerState != null) && (Mathf.Abs(body.velocity.x) < c_stopThreshold))
             {
-                body.velocity = Vector2.zero;
+                // body.velocity = Vector2.zero;
+                body.velocity = new Vector2(0f, body.velocity.y);
             }
 
         }
