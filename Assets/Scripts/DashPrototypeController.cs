@@ -24,7 +24,7 @@ public class DashPrototypeController : MonoBehaviour
         is_dashing = false;
         dash_timer = 0.0f;
         originalColor = renderer.color;
-        deceleration = 0.1f;
+        deceleration = 0.5f;
     }
 
     // Update is called once per frame
@@ -77,8 +77,10 @@ public class DashPrototypeController : MonoBehaviour
             if(!dash_direction && Input.GetKey("d")){
                 // obj freeze
                 // body.velocity = new Vector2();
+
                 // obj slow
-                body.velocity *= (1 - deceleration); 
+                Vector2 newVelocity = new Vector2(body.velocity.x * (1 - deceleration), body.velocity.y);
+                body.velocity = newVelocity; 
                 StopDash();
                 return;
             }
@@ -86,7 +88,9 @@ public class DashPrototypeController : MonoBehaviour
                 // obj freeze
                 // body.velocity = new Vector2();
                 // obj slow
-                body.velocity *= (1 - deceleration); 
+                // body.velocity *= (1 - deceleration); 
+                Vector2 newVelocity = new Vector2(body.velocity.x * (1 - deceleration), body.velocity.y);
+                body.velocity = newVelocity; 
                 StopDash();
                 return;
             }

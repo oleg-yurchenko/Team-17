@@ -11887,6 +11887,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4675253735484317481, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: blinkDuration
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6897031926090141874, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_Name
       value: Player
@@ -11894,6 +11898,26 @@ PrefabInstance:
     - target: {fileID: 6897031926090141874, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
       propertyPath: m_TagString
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 7878251951987635740, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: m_RootOrder
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: c_stopThreshold
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: c_STOP_THRESHOLD
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7974182450257087104, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: c_decelerationRate
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 8462452509585832696, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
+      propertyPath: dash_force
+      value: 12
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4998e0380b4b04feb87a9213de1ca592, type: 3}
