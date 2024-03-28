@@ -30,6 +30,28 @@ namespace DialogueSystem
             finished = true; // our line is finished when the loop is finished
 
         }
+
+
+        // Function to skip dialogue by holding down K for 3 seconds
+        protected IEnumerator SkipDialogue()
+        {
+            float holdTime = 0f;
+            while (holdTime < 3f)
+            {
+                if (Input.GetKey(KeyCode.K))
+                {
+                    holdTime += Time.deltaTime;
+                }
+                else
+                {
+                    holdTime = 0f;
+                }
+                yield return null;
+            }
+
+            // If the space button is held for 5 seconds, set dialogue to finished
+            finished = true;
+        }
     }
 
 }
