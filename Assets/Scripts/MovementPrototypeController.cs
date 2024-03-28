@@ -38,6 +38,10 @@ public class MovementPrototypeController : MonoBehaviour
     
     [SerializeField]
 	private const int DOUBLE_JUMP_THRESHOLD = 40;
+
+    [SerializeField] private GameObject levelObject;
+    private TrackObjects trackObject;
+    
     
     // Start is called before the first frame update
     void Start()
@@ -53,6 +57,7 @@ public class MovementPrototypeController : MonoBehaviour
 		animator = GetComponent<Animator>();
 		initialScale = transform.localScale;
         c_originalMoveForceMultiplier = c_moveForceMultiplier;
+        trackObject = levelObject.GetComponent<TrackObjects>();
     }
 
     // Update is called once per frame
@@ -147,12 +152,14 @@ public class MovementPrototypeController : MonoBehaviour
                         // Collision with left side
                         playerState = "wallLeft";
                         // Debug.Log("Collided on the left side");
+                        setDoubleJumpDelay(0);
                     }
                     else if (contact.normal.x < 0)
                     {
                         // Collision with right side
                         playerState = "wallRight";
                         // Debug.Log("Collided on the right side");
+                        setDoubleJumpDelay(0);
                     }
                     return;
                 }
@@ -163,10 +170,7 @@ public class MovementPrototypeController : MonoBehaviour
         if (collision.gameObject.tag == "Obstacle")
         {
             // reseting player location
-            reset((float)0.0, (float)5.0);
-            body.velocity = Vector2.zero;
-            body.angularVelocity = 0f;
-            setDisabled(60);
+            trackObject.ResetLevel();
             // reseting dragon location
             // dragon.reset();
 
@@ -215,6 +219,11 @@ public class MovementPrototypeController : MonoBehaviour
     public void setDisabled(int frames)
     {
         disabled = frames;
+    }
+
+    public void setDoubleJumpDelay(int num)
+    {
+        doubleJumpDelay = num;
     }
 
     void Jump() 
