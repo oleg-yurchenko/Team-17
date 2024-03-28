@@ -19,7 +19,7 @@ public class MovementPrototypeController : MonoBehaviour
     private Vector2 verticalForce = new Vector2();
     private Rigidbody2D body;
     private int disabled;
-    private string playerState; // "air" for jumping, "ground" for on ground, "wallRight"&"wallLeft" for on the wall
+    public string playerState; // "air" for jumping, "ground" for on ground, "wallRight"&"wallLeft" for on the wall
 	
     private ChargeJumpScript chargeJump;
     public bool hasJumped;
@@ -84,7 +84,7 @@ public class MovementPrototypeController : MonoBehaviour
         }
         if (onWall() && body.velocity.y < c_wallSpeed)
         {
-            //Debug.Log("yes");
+            // Debug.Log("yes");
             body.velocity = new Vector2(body.velocity.x, c_wallSpeed);
             hasJumped = false;
         }
@@ -196,6 +196,15 @@ public class MovementPrototypeController : MonoBehaviour
         return (playerState == "wallLeft") || (playerState == "wallRight");
     }
 
+    bool onWalLLeft() {
+        return (playerState == "wallLeft");
+    }
+
+       bool onWallRight()
+    {
+        return (playerState == "wallRight");
+    }
+
     public string getPlayerState()
     {
         return playerState;
@@ -228,7 +237,7 @@ public class MovementPrototypeController : MonoBehaviour
 
     void Jump() 
     {
-        if (!hasJumped) {
+        if (!hasJumped && !onWall()) {
             body.AddForce(verticalForce, ForceMode2D.Impulse);
             hasJumped = true;
 			playerState = "air";
