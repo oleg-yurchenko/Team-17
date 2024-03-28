@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class MenuScript : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public GameObject optionsMenuUI;
     public GameObject mainMenuUI;
 
     // Update is called once per frame
@@ -53,7 +54,8 @@ public class MenuScript : MonoBehaviour
 
     public void OpenOptions()
     {
-        Debug.Log("Options menu opened");
+        optionsMenuUI.SetActive(true);
+        mainMenuUI.SetActive(false);
     }
 
     public void playScene(string scene)
