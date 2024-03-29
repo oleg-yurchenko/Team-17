@@ -41,6 +41,7 @@ public class wallMovement : MonoBehaviour
             playerState = "air";
             something.setHasJumped(true);
             something.setDisabled(movementDisableFrames);
+            something.setDoubleJumpDelay(0);
         }
         else if (playerState == "wallRight" && !something.getHasJumped() && Input.GetKey("w") /*&& Input.GetKey("a")*/)
         {
@@ -49,6 +50,7 @@ public class wallMovement : MonoBehaviour
             playerState = "air";
             something.setHasJumped(true);
             something.setDisabled(movementDisableFrames);
+            something.setDoubleJumpDelay(0);
         }
     }
 }
