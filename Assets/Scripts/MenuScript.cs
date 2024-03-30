@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class MainMenuScript : MonoBehaviour
+public class MenuScript : MonoBehaviour
 {
     public static bool GameIsPaused = false;
+    public GameObject optionsMenuUI;
     public GameObject mainMenuUI;
 
     // Update is called once per frame
@@ -16,14 +17,15 @@ public class MainMenuScript : MonoBehaviour
             if (GameIsPaused)
             {
                 Resume();
-            } else
+            }
+            else
             {
                 Pause();
             }
         }
     }
 
-    
+
     public void Resume()
     {
         mainMenuUI.SetActive(false);
@@ -52,6 +54,12 @@ public class MainMenuScript : MonoBehaviour
 
     public void OpenOptions()
     {
-        Debug.Log("Options menu opened");
+        optionsMenuUI.SetActive(true);
+        mainMenuUI.SetActive(false);
+    }
+
+    public void playScene(string scene)
+    {
+        SceneManager.LoadScene(scene);
     }
 }
