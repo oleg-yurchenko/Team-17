@@ -72,6 +72,15 @@ namespace DialogueSystem
         // {
         //     dialogueFinishedCallback = callback;
         // }
+
+        private void Update()
+        {
+            // Check if mouse button is pressed while text is being written
+            if (Input.GetMouseButtonDown(0))
+            {
+                displayImmediately = true; // Set flag to display text immediately
+            }
+        }
         
     }
 

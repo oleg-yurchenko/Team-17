@@ -71,13 +71,13 @@ namespace DialogueSystem
         // }
 
         
-        // Function to skip dialogue by holding down K for 3 seconds
+        // Function to skip dialogue by holding down Tab for 3 seconds
         private IEnumerator SkipDialogue()
         {
             float holdTime = 0f;
             while (holdTime < 3f)
             {
-                if (Input.GetKey(KeyCode.K))
+                if (Input.GetKey(KeyCode.Tab))
                 {
                     holdTime += Time.deltaTime;
                 }

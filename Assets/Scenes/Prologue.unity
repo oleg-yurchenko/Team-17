@@ -427,7 +427,7 @@ MonoBehaviour:
   input: "King: \u201CPlease! Think about what you\u2019re doing to our home!\u201D"
   textColor: {r: 1, g: 0.3935492, b: 0, a: 1}
   textFont: {fileID: 12800000, guid: 2f81d56feaa3c498b8e112659f0f3971, type: 3}
-  delayText: 0.05
+  delayText: 0.08
   delayBetweenLines: 3
   dialogueSprite: {fileID: 21300000, guid: cac539eb5876343388aed8a300dd6073, type: 3}
   imageHolder: {fileID: 113490525}
@@ -618,7 +618,7 @@ MonoBehaviour:
     and sets the ground ablaze.
   textColor: {r: 0, g: 0, b: 0, a: 1}
   textFont: {fileID: 12800000, guid: 2f81d56feaa3c498b8e112659f0f3971, type: 3}
-  delayText: 0.05
+  delayText: 0.08
   delayBetweenLines: 3
   dialogueSprite: {fileID: 21300000, guid: cac539eb5876343388aed8a300dd6073, type: 3}
   imageHolder: {fileID: 393637652}
@@ -884,7 +884,7 @@ MonoBehaviour:
   input: 'a dragon starts its rampage in the kingdom: "ROAR!!!"'
   textColor: {r: 0.03984928, g: 0, b: 1, a: 1}
   textFont: {fileID: 12800000, guid: 2f81d56feaa3c498b8e112659f0f3971, type: 3}
-  delayText: 0.05
+  delayText: 0.08
   delayBetweenLines: 2
   dialogueSprite: {fileID: 21300000, guid: 87b2c7516e1804b299e0ea2655032179, type: 3}
   imageHolder: {fileID: 708490033}
@@ -987,7 +987,7 @@ MonoBehaviour:
     But everything changed when the sky turned orange."
   textColor: {r: 1, g: 0.3935492, b: 0, a: 1}
   textFont: {fileID: 12800000, guid: 2f81d56feaa3c498b8e112659f0f3971, type: 3}
-  delayText: 0.05
+  delayText: 0.08
   delayBetweenLines: 3
   dialogueSprite: {fileID: 21300000, guid: cac539eb5876343388aed8a300dd6073, type: 3}
   imageHolder: {fileID: 595129905}
@@ -1419,7 +1419,7 @@ MonoBehaviour:
     the dragon\u2019s wrath for now\u2026 but the dragon starts to chase him...."
   textColor: {r: 1, g: 0, b: 0.020645618, a: 1}
   textFont: {fileID: 12800000, guid: 2f81d56feaa3c498b8e112659f0f3971, type: 3}
-  delayText: 0.05
+  delayText: 0.08
   delayBetweenLines: 3
   dialogueSprite: {fileID: 21300000, guid: cac539eb5876343388aed8a300dd6073, type: 3}
   imageHolder: {fileID: 1692844753}
@@ -1602,7 +1602,7 @@ MonoBehaviour:
     on the king, with the citizens screaming in fear.
   textColor: {r: 0, g: 0, b: 0, a: 1}
   textFont: {fileID: 12800000, guid: 2f81d56feaa3c498b8e112659f0f3971, type: 3}
-  delayText: 0.05
+  delayText: 0.08
   delayBetweenLines: 3
   dialogueSprite: {fileID: 21300000, guid: cac539eb5876343388aed8a300dd6073, type: 3}
   imageHolder: {fileID: 927599415}
@@ -1858,7 +1858,7 @@ MonoBehaviour:
     a protector; A king that watched over the lands.
   textColor: {r: 0, g: 0, b: 0, a: 1}
   textFont: {fileID: 12800000, guid: 2f81d56feaa3c498b8e112659f0f3971, type: 3}
-  delayText: 0.05
+  delayText: 0.08
   delayBetweenLines: 2
   dialogueSprite: {fileID: 21300000, guid: d15e7c30a19b84b3ca98b3fa4e792613, type: 3}
   imageHolder: {fileID: 793141676}
@@ -1933,7 +1933,7 @@ MonoBehaviour:
     destroying his kingdom.
   textColor: {r: 1, g: 0, b: 0.8834677, a: 1}
   textFont: {fileID: 12800000, guid: 2f81d56feaa3c498b8e112659f0f3971, type: 3}
-  delayText: 0.05
+  delayText: 0.08
   delayBetweenLines: 0
   dialogueSprite: {fileID: 21300000, guid: bc5468a4188e34a8eb2354b79f0aec89, type: 3}
   imageHolder: {fileID: 475378548}
