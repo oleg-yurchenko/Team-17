@@ -19,6 +19,8 @@ namespace DialogueSystem
         private IEnumerator dialogueSquence() // loop all the obj
         {
             // Deactivate(); // when u activate one dialogue line, u should deactivate the others
+
+            StartCoroutine(SkipDialogue()); // Start the skip dialogue coroutine
             
             for(int i = 0; i < transform.childCount; i++)
             {
@@ -67,6 +69,28 @@ namespace DialogueSystem
         //     // Deactivate the current dialogue line
         //     Deactivate();
         // }
+
+        
+        // Function to skip dialogue by holding down Tab for 3 seconds
+        private IEnumerator SkipDialogue()
+        {
+            float holdTime = 0f;
+            while (holdTime < 3f)
+            {
+                if (Input.GetKey(KeyCode.Tab))
+                {
+                    holdTime += Time.deltaTime;
+                }
+                else
+                {
+                    holdTime = 0f;
+                }
+                yield return null;
+            }
+
+            // If the space button is held for 5 seconds, load the next scene
+            LoadNextScene();
+        }
 
         
         private void Deactivate()
