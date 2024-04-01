@@ -35,9 +35,9 @@ MonoBehaviour:
     m_OverrideEntries:
     - m_Name: jump1
       m_Hash: 2008017376
-      m_Sprite: {fileID: 21300000, guid: 016288abb25ba4e0f8d1d7995d6bab92, type: 3}
+      m_Sprite: {fileID: 21300000, guid: c9c3bcf1ae11a41fab4742b33eb42fb4, type: 3}
       m_FromMain: 0
-      m_SpriteOverride: {fileID: 21300000, guid: 016288abb25ba4e0f8d1d7995d6bab92, type: 3}
+      m_SpriteOverride: {fileID: 21300000, guid: c9c3bcf1ae11a41fab4742b33eb42fb4, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 1
   - m_Name: Run
@@ -66,4 +66,15 @@ MonoBehaviour:
       m_SpriteOverride: {fileID: 21300000, guid: 5a6e3ca69f5984dfbb07589605ccbafa, type: 3}
     m_FromMain: 0
     m_EntryOverrideCount: 4
+  - m_Name: Fall
+    m_Hash: 1533177906
+    m_CategoryList: []
+    m_OverrideEntries:
+    - m_Name: Entry
+      m_Hash: -354373004
+      m_Sprite: {fileID: 21300000, guid: 5e1bdc944534c4dcca346ca2d489ad9e, type: 3}
+      m_FromMain: 0
+      m_SpriteOverride: {fileID: 21300000, guid: 5e1bdc944534c4dcca346ca2d489ad9e, type: 3}
+    m_FromMain: 0
+    m_EntryOverrideCount: 1
   m_PrimaryLibraryGUID: 

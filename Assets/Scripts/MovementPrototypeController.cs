@@ -67,6 +67,7 @@ public class MovementPrototypeController : MonoBehaviour
 		ReducePlayerSpeed();
 		animator.SetBool("isGroundedMoving", Math.Abs(body.velocity.x) > MOVING_ANIMATION_THRESHOLD);
 		animator.SetBool("isAirborne", Math.Abs(body.velocity.y) > AIRBORNE_ANIMATION_THRESHOLD);
+        animator.SetBool("isFallingDown", body.velocity.y < -AIRBORNE_ANIMATION_THRESHOLD);
 		if (!onWall())
 			if (body.velocity.x < 0.0f)
 				transform.localScale = new Vector3(-initialScale.x, initialScale.y, initialScale.z);
