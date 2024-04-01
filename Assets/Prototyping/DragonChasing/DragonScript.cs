@@ -21,7 +21,7 @@ public class DragonScript : MonoBehaviour
 		{
 			forwardSpeed *= 3;
 		}
-		else if (distToPlayer.x < 0)
+		else if (distToPlayer.x < 13)
 		{
 			forwardSpeed = 0;
 		}
