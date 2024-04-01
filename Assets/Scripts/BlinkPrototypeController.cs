@@ -32,12 +32,13 @@ rb = GetComponent<Rigidbody2D>(); // Get Rigidbody2D reference
 }
 // Update is called once per frame
 void Update() {
-// Color updatedColor;
-// if (isBlinking)
-//  updatedColor = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 0.5f);
-// else
-//  updatedColor = new Color(renderer.color.r, renderer.color.g, renderer.color.b, 1.0f);
-// renderer.color = updatedColor;
+ Color updatedColor;
+ if (isBlinking)
+  updatedColor = new Color(originalColor.r, originalColor.g, originalColor.b, 0.5f);
+ else
+  updatedColor = new Color(originalColor.r, originalColor.g, originalColor.b, 1.0f);
+ //renderer.color = updatedColor;
+ renderer.materials[0].color = updatedColor;
 visible = collider.enabled;
 momentum = rb.velocity;
 magnitude =  rb.velocity.magnitude * Time.deltaTime;
@@ -67,7 +68,7 @@ magnitude =  rb.velocity.magnitude * Time.deltaTime;
 		}
 		else
 		{
-			renderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, blinkAlpha); // Set color to blink color
+			//renderer.color = new Color(originalColor.r, originalColor.g, originalColor.b, blinkAlpha); // Set color to blink color
 		}
 	}
 }
@@ -118,7 +119,7 @@ void EndBlink() {
 isBlinking = false;
 canBlink = true;
 collider.enabled = true;
-renderer.color = originalColor; // restore the color
+//renderer.color = originalColor; // restore the color
 }
 // void OnCollisionEnter2D(Collision2D col) {
 //  if (isBlinking && (col.gameObject.tag != "Respawn")) {
