@@ -13,7 +13,6 @@ public class SqaureObstacle : MonoBehaviour
     private Rigidbody2D body;
     private Animator anim; // no use for now
     private Transform currPoint;
-
     public float speed;
     
     // Start is called before the first frame update
@@ -57,5 +56,20 @@ public class SqaureObstacle : MonoBehaviour
             currPoint = PointBBeforeHill.transform;
         }
         
+    }
+
+
+    // if the player gets in contact with the sqaure, reset level and teleport the player to the nearest check point.
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            // Find the TrackObjects script in the scene
+            TrackObjects trackObjects = FindObjectOfType<TrackObjects>();
+            if (trackObjects != null)
+            {
+                trackObjects.ResetLevel();
+            }
+        }
     }
 }
