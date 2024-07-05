@@ -47,8 +47,8 @@ public class DashPrototypeController : MonoBehaviour
 
         // Debug.Log(is_dashing.ToString());
         // Check for dash input
-        // dash when the player hits the key Q
-        if (Input.GetKey("q") && !is_dashing)
+        // dash when the player hits the key Shift
+        if ((Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift)) && !is_dashing)
         {
             if((Input.GetKey("a") && Input.GetKey("d"))){
                 return;
