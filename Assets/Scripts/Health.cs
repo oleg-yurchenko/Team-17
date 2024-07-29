@@ -6,10 +6,14 @@ using UnityEngine.UI;
 public class Health : MonoBehaviour
 {
 
-    public int health; // current num of hearts
-    public int numOfHearts; // current max num of hearts
+    // ref: https://www.youtube.com/watch?v=3uyolYVsiWc&ab_channel=Blackthornprod
 
-    public Image[] hearts; // stores the forever max num of hearts 
+    public int health; // current num of hearts
+    // for now the default value I set is 3
+    public int numOfHearts; // current max num of hearts
+    // for now the default initial value is 3, the player needs to "upgrade" to get to 10 hearts in game
+
+    public Image[] hearts; // stores the max num of hearts (cannot get more than this number of hearts no matter how the player "upgrades")
     // for now the default value I set is 10
     public Sprite fullHeart;
     public Sprite emptyHeart;
@@ -17,12 +21,17 @@ public class Health : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        UpdateHeartsDisplay();
+    }
+
+    void Update()
+    {
+        UpdateHeartsDisplay();
     }
 
     // Update is called once per frame
     // Sprite art logistics goes here
-    void Update()
+    void UpdateHeartsDisplay()
     {
 
         // the player should not gain more health than the max num of heart containers
@@ -62,4 +71,25 @@ public class Health : MonoBehaviour
 
 
     // }
+
+    // Method to reduce health by amount
+    public void ReduceHealth(int amount)
+    {
+        health -= amount; 
+        if (health < 0) health = 0; // health cannot be negative
+        UpdateHeartsDisplay();
+    }
+
+    // Method to check if player is dead
+    public bool IsDead()
+    {
+        return health <= 0;
+    }
+
+    // Method to restore health to full
+    public void RestoreFullHealth()
+    {
+        health = numOfHearts;
+        UpdateHeartsDisplay();
+    }
 }

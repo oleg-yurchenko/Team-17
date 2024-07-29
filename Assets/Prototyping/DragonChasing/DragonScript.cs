@@ -14,7 +14,7 @@ public class DragonScript : MonoBehaviour
 	void FixedUpdate()
 	{
 		Vector3 distToPlayer = playerPos.position - transform.position;
-		Debug.Log(distToPlayer);
+		// Debug.Log(distToPlayer);
 		
 		// This condition speeds up the dragon so it can catches the player when the player is too far
 		if (distToPlayer.x > 27) 

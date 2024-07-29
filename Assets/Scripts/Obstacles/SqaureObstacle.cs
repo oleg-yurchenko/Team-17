@@ -68,7 +68,9 @@ public class SqaureObstacle : MonoBehaviour
             TrackObjects trackObjects = FindObjectOfType<TrackObjects>();
             if (trackObjects != null)
             {
+                // Debug.Log("you touched 11111");
                 trackObjects.ResetLevel();
+                // Debug.Log("you reset 22222");
             }
         }
     }
