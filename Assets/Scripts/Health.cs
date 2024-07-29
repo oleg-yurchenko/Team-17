@@ -80,6 +80,15 @@ public class Health : MonoBehaviour
         UpdateHeartsDisplay();
     }
 
+    // Method to increase health by amount
+    // not used for now
+    public void IncreaseHealth(int amount)
+    {
+        health += amount; 
+        if (health > hearts.Length) health = hearts.Length; // health cannot exceed the max health
+        UpdateHeartsDisplay();
+    }
+
     // Method to check if player is dead
     public bool IsDead()
     {
@@ -92,4 +101,6 @@ public class Health : MonoBehaviour
         health = numOfHearts;
         UpdateHeartsDisplay();
     }
+
+
 }
