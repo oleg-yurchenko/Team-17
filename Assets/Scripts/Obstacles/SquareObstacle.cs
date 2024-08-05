@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SqaureObstacle : MonoBehaviour
+public class SquareObstacle : MonoBehaviour
 {
 
     // ref: https://www.youtube.com/watch?v=RuvfOl8HhhM&ab_channel=MoreBBlakeyyy
