@@ -19,6 +19,7 @@ public class DieOnTouch : MonoBehaviour
         {
             // Debug.Log("touching death");
             // Load the initial scene
+            // Debug.Log("dieontouch reset"); // there are sooo many ResetLevel calls.......
             trackObject.ResetLevel();
         }
     }

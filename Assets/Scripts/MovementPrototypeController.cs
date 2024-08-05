@@ -168,14 +168,15 @@ public class MovementPrototypeController : MonoBehaviour
             // playerState = "ground"; // if collision.gameObject.tag == "Wall", playerState = "ground" ????
         }
         // for obstacle
-        if (collision.gameObject.tag == "Obstacle")
-        {
-            // reseting player location
-            trackObject.ResetLevel();
-            // reseting dragon location
-            // dragon.reset();
+        // if (collision.gameObject.tag == "Obstacle")
+        // {
+        //     // reseting player location
+        //     // Debug.Log("movement reset"); // Another one??? 
+        //     trackObject.ResetLevel(); // no need... handled in each obstacle scripts for now...
+        //     // reseting dragon location
+        //     // dragon.reset();
 
-        }
+        // }
         if (collision.gameObject.tag == "Ground")
         {
             playerState = "ground";
