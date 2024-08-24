@@ -19,6 +19,16 @@ private Rigidbody2D rb;
 public bool visible;
 public Vector2 momentum;
 public float magnitude;
+
+// Tag for the tile that prevents blinking
+public string unblinkableTag = "unblinkable";
+
+// Variables to track if player is stuck
+private bool isStuck = false;
+private float stuckTimer = 0f;
+
+
+
 // Start is called before the first frame update
 void Start() {
 isBlinking = false;
@@ -53,13 +63,13 @@ magnitude =  rb.velocity.magnitude * Time.deltaTime;
 		if (hit.collider != null && hit.collider.tag != "Respawn")
 		{
 		Debug.Log(hit.collider.name);
-		Debug.Log("You suck");
+		// Debug.Log("You suck");
 		collider.enabled = false; // Disable collider preemptively
 		}
 		else
 		{
 		collider.enabled = true;
-		Debug.Log("smd");
+		// Debug.Log("smd");
 		}
 		// Checks if the blink duration has exceeded and if the object is not colliding with anything, then ends the blink.
 		if (blink_activeTimer >= blinkDuration && ((collider.OverlapCollider(new ContactFilter2D().NoFilter(), new Collider2D[1]) == 0))) // if Blink has blinked more than the duration time, it ends
@@ -97,8 +107,17 @@ void FixedUpdate() {
 //  blink_activeTimer = 0.0f;
 //  collider.enabled = true;
 // }
+
+	// Check if the player is touching an "unblinkable" tile
+    if (IsTouchingUnblinkableTile())
+    {
+        // Debug.Log("Cannot blink while touching an unblinkable tile.");
+        return;
+    }
+
 	if (isBlinking)
-	return;
+		return;
+
 	if (Input.GetKey(KeyCode.LeftControl) && canBlink)
 	{
 		if (Time.time - lastBlinkTime >= blinkCooldown) // if the cooldown is over
@@ -110,21 +129,33 @@ void FixedUpdate() {
 }
 
 void StartBlink() {
-isBlinking = true;
-canBlink = false;
-blink_activeTimer = 0.0f;
+	isBlinking = true;
+	canBlink = false;
+	blink_activeTimer = 0.0f;
 }
 
 void EndBlink() {
-isBlinking = false;
-canBlink = true;
-collider.enabled = true;
-//renderer.color = originalColor; // restore the color
+	isBlinking = false;
+	canBlink = true;
+	collider.enabled = true;
+	//renderer.color = originalColor; // restore the color
 }
-// void OnCollisionEnter2D(Collision2D col) {
-//  if (isBlinking && (col.gameObject.tag != "Respawn")) {
-//      collider.enabled = false;
-//  }
-// }
+
+// Function to check if the player is touching an "unblinkable" tile
+    bool IsTouchingUnblinkableTile()
+    {
+        Collider2D[] results = new Collider2D[10];
+        ContactFilter2D filter = new ContactFilter2D().NoFilter();
+        int count = collider.OverlapCollider(filter, results);
+
+        for (int i = 0; i < count; i++)
+        {
+            if (results[i].CompareTag(unblinkableTag))
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
