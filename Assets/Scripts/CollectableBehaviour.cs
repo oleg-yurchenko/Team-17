@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class CollectableBehaviour : MonoBehaviour
 {
-    private int coins = 0;
+    private CoinDisplay coinDisplay;
     // Start is called before the first frame update
     void Start()
     {
-        
+        coinDisplay = gameObject.AddComponent<CoinDisplay>();
     }
 
     // Update is called once per frame
@@ -20,16 +20,8 @@ public class CollectableBehaviour : MonoBehaviour
     void OnCollisionEnter2D(Collision2D collision) {
         if (collision.gameObject.tag == "Coin")
         {
-            coins++;
-            if (coins == 1)
-            {
-                Debug.Log("You have " + coins + " coin!");
-            }
-            else
-            {
-                Debug.Log("You have " + coins + " coins!");
-            }
             Destroy(collision.gameObject);
+            coinDisplay.addCoins();
         }
     }
 }
